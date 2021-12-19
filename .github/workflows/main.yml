@@ -31,5 +31,10 @@ jobs:
         with:
           root_file: resume.tex
           latexmk_use_xelatex: true
+      - name: Upload Pdf
+        uses: actions/upload-artifact@v2
+        with:
+          name: busenburg_resume
+          path: resume.pdf
       
       
