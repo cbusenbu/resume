@@ -26,15 +26,22 @@ jobs:
       - name: Set up Git Repo
         uses: actions/checkout@v4
         
-      - name: Compile LaTex document
+      - name: Compile Director Resume
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: resume.tex
+          root_file: resume-director.tex
+          latexmk_use_xelatex: true
+      - name: Compile IC Resume
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: resume-ic.tex
           latexmk_use_xelatex: true
       - name: Upload Pdf
         uses: actions/upload-artifact@v4
         with:
           name: busenburg_resume
-          path: resume.pdf
+          path: |
+            resume-director.pdf
+            resume-ic.pdf
       
       
