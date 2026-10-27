@@ -23,13 +23,20 @@ jobs:
       - name: Set up Git Repo
         uses: actions/checkout@v4
         
-      - name: Compile LaTex document
+      - name: Compile Director Resume
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: resume.tex
+          root_file: resume-director.tex
+          latexmk_use_xelatex: true
+      - name: Compile IC Resume
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: resume-ic.tex
           latexmk_use_xelatex: true
       
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
-          files: resume.pdf
+          files: |
+            resume-director.pdf
+            resume-ic.pdf
